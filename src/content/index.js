@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Display } from './Display';
 import { Landing } from './Landing';
 import Header from './Partials/Header'
-import NewsFakeJson from '../NewsFakeJson'
 import '../styling/style.css';
 
 
@@ -17,8 +16,10 @@ export const App = () => {
     const [query, setQuery] = useState(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.REACT_APP_API_KEY}`)
     // establish state for storing of the news 
     const [newsData, setNewsData] = useState([]);
-    // Use effect hook for fetch API call from News API 
+    // State for Favorites
+    const [faves, setFaves] = useState=([]);
 
+    // Use effect hook for fetch API call from News API 
     useEffect(() => {
             if (query){
                 fetch(query)
@@ -32,7 +33,20 @@ export const App = () => {
                 })
             }
         }, [])
+        
+        // Function Handle Display
+            // Drill props and function to Display // router Link to results to go to Details
 
+        // Function to Grab On Change for Query
+            //set up state for query
+            //Drill to landing
+        // Function to handle submit Query
+            // Drill to landing
+        
+        //Function to handle faves Add
+            //Drill to:
+                // Details Drill
+                // Display Drill 
         
     return (
         // Router for setting routes
@@ -40,7 +54,10 @@ export const App = () => {
             <Header /> 
             <div className='app'>
                 <Route exact path="/" render={()=>  <Landing />} />
-                <Route path="/results" render={()=><Display news={newsData}/>} />
+                <Route path="/results" render={()=> <Display news={newsData}/>} />
+                {/* Route for Details */}
+                {/* Route for Favorites */}
+                
             </div>
         </Router>
     )
